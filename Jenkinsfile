@@ -43,7 +43,7 @@ pipeline {
 				echo 'Deploying to AWS...'
 				withAWS(credentials: 'capstone', region: 'us-west-2') {
 					sh "aws eks --region us-west-2 update-kubeconfig --name capstoneclusterpflash"
-					sh "kubectl config use-context arn:aws:eks:us-west-2:960920920983:cluster/capstoneclusterpflash"
+					sh "kubectl config use-context arn:aws:eks:us-west-2:466659414290:cluster/capstoneclusterpflash"
 					sh "kubectl apply -f capstone-k8s.yaml"
 					sh "kubectl get nodes"
 					sh "kubectl get deployments"
