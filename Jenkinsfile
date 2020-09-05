@@ -8,7 +8,7 @@ pipeline {
 		}
 		stage('Push Docker Image') {
 			steps {
-				withDockerRegistry([url: "", credentialsId: "capstone-docker-id"]) {
+				withDockerRegistry([url: "", credentialsId: "docker-capstone-id"]) {
 					sh "docker tag capstone-app-pflash pflash30/capstone-app-pflash"
 					sh 'docker push pflash30/capstone-app-pflash'
 				}
