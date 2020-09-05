@@ -3,14 +3,14 @@ pipeline {
 	stages {
 		stage('Build Docker Image') {
 			steps {
-				sh 'docker build -t capstone-app-pflash .'
+				sh 'sudo docker build -t capstone-app-pflash .'
 			}
 		}
 		stage('Push Docker Image') {
 			steps {
 				withDockerRegistry([url: "", credentialsId: "capstone-docker-id"]) {
-					sh "docker tag capstone-app-pflash pflash30/capstone-app-pflash"
-					sh 'docker push pflash30/capstone-app-pflash'
+					sh "sudo docker tag capstone-app-pflash pflash30/capstone-app-pflash"
+					sh 'sudo docker push pflash30/capstone-app-pflash'
 				}
 			}
 		}
