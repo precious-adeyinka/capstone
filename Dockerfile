@@ -1,23 +1,12 @@
-FROM 
+FROM node:12.13.1-stretch-slim
 
-# workdir
-WORKDIR /app
+WORKDIR /chitchat
 
-# source code
-COPY . /app/chitchat /app
+COPY app/chitchat/ /chitchat/
 
-# install dependencies
-RUN npm install -g npm s&& \
-    npm install
-    
-# expose service port
-EXPOSE 80
+RUN npm install -g npm && \
+    npm install && \
+    npm update && \
+    npm run build
 
-# run shell command
-CMD ["npm","run serve"]
-
-# FROM alpine
-# RUN apk add --no-cache ca-certificates && update-ca-certificates
-# ADD https://get.aquasec.com/microscanner .
-# RUN chmod +x microscanner
-# RUN ./microscanner NGNmNTE1MWJjNjAw
+CMD ["/bin/bash", "-c", "npm run serve"]
