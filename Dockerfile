@@ -6,7 +6,6 @@ COPY app/chitchat/ /chitchat/
 
 RUN npm install -g npm && \
     npm install && \
-    npm update && \
-    npm run build
+    npm update  
 
 CMD ["/bin/bash", "-c", "npm run serve"]
