@@ -52,14 +52,6 @@ pipeline {
 				}
 			}
 		}
-		stage('Checking rollout') {
-			steps{
-				echo 'Checking rollout...'
-				withAWS(credentials: 'capstone', region: 'us-west-2') {
-					 sh "kubectl rollout status deployments/capstone-app-pflash"
-				}
-			}
-		}
 		stage("Cleaning up") {
 			steps{
 				echo 'Cleaning up...'
