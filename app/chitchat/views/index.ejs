@@ -3,9 +3,183 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css" integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA==" crossorigin="anonymous" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <!--Preloader-->
+    <div id="preloader">
+      <div class="preloader-box">
+        <img src="/images/logo.png" class="preloader-logo" />
+      </div>
+    </div>
+    
+    <main>
+      <div class="row">
+        <div class="col col-25">
+          <h1 style="margin: 1rem 0 0; display: flex;"><%= title %>
+            <img src="/images/logo.png" width="50" style="display: inline; margin-top: -2rem;" >
+          </h1>
+          <p style="margin: 10px;color: #fff;display: inline-block">Welcome to <%= title %></p>
+          <!--<img src="/images/chatting.svg" width="300" style="margin: 1rem auto" />-->
+          <img src="/images/messages.svg" style="display: block;margin: 3rem auto!important; max-width: 70%" />
+        </div>
+        <!--<div class="col col-25"></div>-->
+        <div class="col col-50" id="chatarea">
+          <!--Header-->
+          <div class="header">
+            <div class="header-inner">
+              <div class="header-wrapper">
+                <div class="image-wrapper">
+                  <div class="image-wrapper-inner">
+                    
+                    <div class="image-cover">
+                      <div class="image-content">
+                        <img src="/images/1.png" />
+                        <span class="dot"></span>
+                      </div>
+                    </div>
+                    
+                    <div class="info">
+                      <h3 class="title">
+                        <!--Elmer Murphy-->
+                        <form action="" id="usernameForm">
+                          <input type="text" placeholder="Change Username" id="username" />
+                        </form>
+                      </h3>
+                      <h6 class="subtitle" id="typing">Online</h6>
+                    </div>
+                    
+                    <!--<span class="dot"></span>-->
+                  </div>
+                </div>
+                <!--Menu-->
+                <div class="menu">
+                  <!--Handle-->
+                  <div class="handles">
+                    <span class="handle"></span>
+                    <span class="handle"></span>
+                    <span class="handle"></span>
+                  </div>
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+          <!--Body-->
+          <div class="body">
+            <div class="body-inner" id="bodyInner">
+              <!--<div class="sender">-->
+              <!--  <p>lorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donor</p>-->
+              <!--</div>-->
+              <!--<div class="receiver">-->
+              <!--  <p>lorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donor</p>-->
+              <!--</div>-->
+              <!-- <div class="sender">-->
+              <!--  <p>lorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem</p>-->
+              <!--</div>-->
+              <!--<div class="receiver">-->
+              <!--  <p>lorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsum </p>-->
+              <!--</div>-->
+              <!--<div class="sender">-->
+              <!--  <p>lorem ispsum donor </p>-->
+              <!--</div>-->
+              <!--<div class="receiver">-->
+              <!--  <p>lorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsumlorem ispsum donorlorem ispsum </p>-->
+              <!--</div>-->
+              <!-- <div class="sender">-->
+              <!--  <p>lorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donorlorem ispsum donor </p>-->
+              <!--</div>-->
+            </div>
+          </div>
+          <!--Footer-->
+          <div class="footer">
+            <div class="box">
+              <div class="content">
+                <div class="smiley"><i class="far fa-smile-wink"></i></div>
+                
+                <div class="messageBox">
+                  <form action="" id="messageForm">
+                    <input type="text" placeholder="Type a message here" id="message" />
+                  </form>
+                </div>
+                
+                <div class="sendMessageBtn" id="sendMessageBtn"><i class="far fa-paper-plane"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--Scripts-->
+    <script src="/scripts/index.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>-->
+    <!--<script src="http://localhost:8080/socket.io/socket.io.js"></script>-->
+    <!--<script>-->
+      <!--// Socket io - Make Connection-->
+    <!--  let socket = io.connect('http://localhost:3000/');-->
+    <!--</script>-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+      // Emit Change Username
+      let username = document.querySelector('#username');
+      let usernameForm = document.querySelector('#usernameForm');
+      usernameForm.onsubmit = (e)=>{
+        e.preventDefault();
+        // username.addEventListener('change', ()=>{
+          console.log(username.value);
+          socket.emit('change_username', {'username': username.value})
+        // })
+        return false;
+      }
+      // Listen for change username
+      socket.on('change_username', (data)=>{
+        username.value = data.username;
+      });
+     
+      // Emit Message
+      let message = document.querySelector('#message');
+      let messageForm = document.querySelector('#messageForm');
+      let sendMessageBtn = document.querySelector('#sendMessageBtn');
+      sendMessageBtn.onclick = ()=>{
+        console.log(message.value);
+        socket.emit('new_message', {'message': message.value});
+        message.value= "";
+      }
+      messageForm.onsubmit = (e)=>{
+        e.preventDefault();
+        // message.addEventListener('change', ()=>{
+          console.log(message.value);
+          socket.emit('new_message', {'message': message.value});
+          message.value= "";
+        // })
+        return false;
+      }
+      // Emit typing
+      let feedback = document.querySelector('#typing');
+      message.addEventListener('keypress', ()=>{
+        console.log('typing...', username.value);
+        feedback.innerHTML = "<b>" + username.value + "</b> is typing a message...";
+        socket.emit('typing');
+      })
+       message.addEventListener('keyup', ()=>{
+        console.log('stopped typing!', username.value);
+        setTimeout(()=>feedback.innerHTML = "Online", 1500);
+      })
+      // Listen for typing
+      socket.on('typing', (data)=>{
+        console.log('Typing - ' + data)
+        feedback.innerHTML = "<b>" + data.username + "</b> is typing a message...";
+      });
+      // Listen for new message
+      let body = document.querySelector('#bodyInner');
+      socket.on('new_message', (data)=>{
+        console.log(data);
+        bodyInner.innerHTML += "<div class='sender'><p>" + new Date().toLocaleTimeString() + "<br/><b>" + data.username + "</b> : &nbsp;" + data.message + "</p></div>";
+        document.querySelector('sender').focus();  
+      })
+    </script>
   </body>
 </html>

@@ -30,6 +30,46 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /**
+ * Initialize socket.io library with the server object instance
+ */
+var io = require('socket.io')(server);
+ 
+ /**
+ * Listen for every connection
+ */
+  io.on('connection', (socket) => {
+    console.log('a user connected');
+    // Assign Default Username
+    socket.username = "Anonymous";
+    io.emit('change_username', {'username': "Anonymous"});
+    
+    // Listen for username changed
+    socket.on('change_username', (data)=>{
+      console.log('Changing username to - ' + data.username);
+      socket.username = data.username;  
+      io.emit('change_username', {'username': data.username});
+    });
+    
+    // Listen for new message
+    socket.on('new_message', (data)=>{
+      console.log('New Message - ' + data.message);
+      io.emit('new_message', {'message': data.message, 'username': socket.username});      
+    });
+    
+    // Listen for typing
+    socket.on('typing', (data)=>{
+      console.log(socket.username + ' is typing');
+      socket.broadcast.emit('typing', {'username': socket.username}); 
+      io.emit('typing', {'username': socket.username});
+    });
+    
+    // Disconnect
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
+  });
+
+/**
  * Normalize a port into a number, string, or false.
  */
 
